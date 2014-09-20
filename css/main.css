@@ -1,0 +1,93 @@
+body {
+    margin: 0;
+}
+
+.workspace {
+    position: relative;
+}
+
+
+.workspace__map {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.workspace__map-inner {
+    position: relative;
+}
+
+
+[class^=color_] {
+    position: absolute;
+    border-radius: 5px;
+    width: 10px;
+    height: 10px;
+}
+
+.color_1 {
+    background: #1abc9c;
+}
+
+.color_2 {
+    background: #2ecc71;
+}
+
+.color_3 {
+    background: #3498db;
+}
+
+.color_4 {
+    background: #9b59b6;
+}
+
+.color_5 {
+    background: #19b698;
+}
+
+.color_6 {
+    background: #27ae60;
+}
+
+.color_7 {
+    background: #2980b9;
+}
+
+.color_8 {
+    background: #8e44ad;
+}
+
+
+.color_9 {
+    background: #f1c40f;
+}
+
+.color_10 {
+    background: #e67e22;
+}
+
+.color_11 {
+    background: #e74c3c;
+}
+
+.color_12 {
+    background: #ecf0f1;
+}
+
+.color_13 {
+    background: #f39c12;
+}
+
+.color_14 {
+    background: #d35400;
+}
+
+.color_15 {
+    background: #c0392b;
+}
+
+.color_16 {
+    background: #bdc3c7;
+}
