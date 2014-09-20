@@ -4,12 +4,23 @@ body,html{
   position: relative;
   width: 100vw;
   height: 100vh;
+  overflow: hidden;
+  font-family: sans-serif;
 }
 
 .workspace {
+    margin-top: 30px;
     position: relative;
 }
 
+.workspace__title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.workspace__title-first {
+    color: #8e44ad;
+}
 
 .workspace__map {
     position: absolute;
@@ -20,9 +31,24 @@ body,html{
 }
 
 .workspace__map-inner {
-    position: relative;
+    margin: 0 auto;
 }
 
+.workspace__images {
+    width: 960px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.workspace__image-before {
+    margin: 0 20px;
+    display: inline-block;
+}
+
+.workspace__image-after {
+    position: relative;
+    display: inline-block;
+}
 
 [class^=color_] {
     position: absolute;
