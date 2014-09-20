@@ -93,16 +93,10 @@ $(function(){
     };
 
     app.movePointToImage(10,10, 'color_1');
-    debugger;
     app.drawImage();
-
 
     var c=document.getElementById("myCanvas");
     var ctx=c.getContext("2d");
     var img=document.getElementById("myImage");
     ctx.drawImage(img,0,0);
-    var p = ctx.getImageData(100, 100, 10, 10).data;
-
-    var hex = "#" + ("000000" + app.rgbToHex(p[0], p[1], p[2])).slice(-6);
-    console.log(hex);
 });
