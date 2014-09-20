@@ -1,4 +1,4 @@
-body,html{
+body, html {
   margin: 0;
   padding: 0;
   position: relative;
@@ -9,115 +9,117 @@ body,html{
 }
 
 .workspace {
-    margin-top: 30px;
-    position: relative;
+  margin-top: 30px;
+  position: relative;
 }
 
 .workspace__title {
-    text-align: center;
-    margin-bottom: 50px;
+  text-align: center;
+  margin-bottom: 50px;
 }
 
 .workspace__title-first {
-    color: #8e44ad;
+  color: #8e44ad;
 }
 
 .workspace__map {
-    position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
 }
 
 .workspace__map-inner {
-    margin: 0 auto;
+  margin: 0 auto;
 }
 
 .workspace__images {
-    width: 960px;
-    margin: 0 auto;
-    text-align: center;
+  width: 960px;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .workspace__image-before {
-    margin: 0 20px;
-    display: inline-block;
+  margin: 0 20px;
+  display: inline-block;
 }
 
 .workspace__image-after {
-    position: relative;
-    display: inline-block;
+  position: relative;
+  display: inline-block;
 }
 
 [class^=color_] {
-    position: absolute;
-    border-radius: 5px;
-    width: 10px;
-    height: 10px;
+  position: absolute;
+  border-radius: 5px;
+  width: 64px;
+  height: 64px;
+  margin-top: -22px;
+  margin-left: -22px;
+  background-size: cover;
 }
 
 .color_1 {
-    background: #1abc9c;
+  background-image: url("../image/1.png");
 }
 
 .color_2 {
-    background: #2ecc71;
+  background-image: url("../image/2.png");
 }
 
 .color_3 {
-    background: #3498db;
+  background-image: url("../image/3.png");
 }
 
 .color_4 {
-    background: #9b59b6;
+  background-image: url("../image/4.png");
 }
 
 .color_5 {
-    background: #19b698;
+  background-image: url("../image/5.png");
 }
 
 .color_6 {
-    background: #27ae60;
+  background-image: url("../image/5.png");
 }
 
 .color_7 {
-    background: #2980b9;
+  background-image: url("../image/1.png");
 }
 
 .color_8 {
-    background: #8e44ad;
+  background-image: url("../image/2.png");
 }
 
-
 .color_9 {
-    background: #f1c40f;
+  background-image: url("../image/3.png");
 }
 
 .color_10 {
-    background: #e67e22;
+  background-image: url("../image/4.png");
 }
 
 .color_11 {
-    background: #e74c3c;
+  background-image: url("../image/5.png");
 }
 
 .color_12 {
-    background: #ecf0f1;
+  background-image: url("../image/6.png");
 }
 
 .color_13 {
-    background: #f39c12;
+  background-image: url("../image/1.png");
 }
 
 .color_14 {
-    background: #d35400;
+  background-image: url("../image/4.png");
 }
 
 .color_15 {
-    background: #c0392b;
+  background-image: url("../image/4.png");
 }
 
 .color_16 {
-    background: #bdc3c7;
+  background-image: url("../image/4.png");
 }
