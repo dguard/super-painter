@@ -38,21 +38,9 @@ $(function(){
                 for(var j = 0; j < list[i].length; j++) {
                     var posX = SEGMENT_W * j;
                     var posY = SEGMENT_H * i;
-
                     this.movePointToImage(posX, posY, this.getNearestColor(list[i][j]));
                 }
             }
-        },
-        findPos: function(obj) {
-            var curleft = 0, curtop = 0;
-            if (obj.offsetParent) {
-                do {
-                    curleft += obj.offsetLeft;
-                    curtop += obj.offsetTop;
-                } while (obj = obj.offsetParent);
-                return { x: curleft, y: curtop };
-            }
-            return undefined;
         },
         rgbToHex: function(r, g, b) {
             if (r > 255 || g > 255 || b > 255)
@@ -70,36 +58,51 @@ $(function(){
                 ]
             ];
         },
-        getNearestColor: function(color)
+        hexToRGB: function(hex){
+            hex = hex.replace('#','');
+            var r = parseInt(hex.substring(0,2), 16);
+            var g = parseInt(hex.substring(2,4), 16);
+            var b = parseInt(hex.substring(4,6), 16);
+
+            return {
+                R: r,
+                G: g,
+                B: b
+            };
+        },
+        getNearestColor: function(hex)
         {
-            throw new DOMException("Метод не определен!");
-//            for(var i = 0; i < LIST_COLORS.length; i++) {
-//
-//            }
+            var n = -1;
+            var distance = Number.MAX_VALUE;
+
+            for(var i = 0; i < LIST_COLORS.length; i++) {
+                if(this._getDistance(hex, LIST_COLORS[i]) < distance) {
+                    distance = this._getDistance(hex, LIST_COLORS[i]);
+                    n = i;
+                }
+            }
+            return 'color_' + (n+1);
+        },
+        _getDistance: function(hex1, hex2) {
+            hex1 = this.hexToRGB(hex1);
+            hex2 = this.hexToRGB(hex2);
+            return Math.sqrt(
+                (hex1.R-hex2.R)*(hex1.R-hex2.R)+(hex1.B-hex2.G)*(hex1.G-hex2.G)+(hex1.B-hex2.B)*(hex1.B-hex2.B)
+            );
         }
     };
 
     app.movePointToImage(10,10, 'color_1');
+    debugger;
+    app.drawImage();
 
-
-//    var myImg = new Image();
-//    myImg.src = 'images/image.jpg';
-//    var context = document.getElementById('myCanvas').getContext('2d');
-//    context.drawImage(myImg, 0, 0);
 
     var c=document.getElementById("myCanvas");
     var ctx=c.getContext("2d");
     var img=document.getElementById("myImage");
     ctx.drawImage(img,0,0);
-    var p = ctx.getImageData(100, 100, 1, 1).data;
-    console.log(p);
-    var hex = "#" + ("000000" + rgbToHex(p[0], p[1], p[2])).slice(-6);
+    var p = ctx.getImageData(100, 100, 10, 10).data;
+
+    var hex = "#" + ("000000" + app.rgbToHex(p[0], p[1], p[2])).slice(-6);
     console.log(hex);
-
-//    drawImage();
-
-//    var p = context.getImageData(20, 100, 100, 100);
-//    var hex = "#" + ("000000" + rgbToHex(p[0], p[1], p[2])).slice(-6);
-//    console.log(hex);
-
 });
