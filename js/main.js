@@ -67,15 +67,6 @@ $(function ()
     },
     getMapImage: function ()
     {
-      //return [
-      //    [
-      //        '#ff000', '#1abc9c', '#2ecc71'
-      //    ],
-      //    [
-      //        '#3498db', '#9b59b6', '#19b698'
-      //    ]
-      //];
-
       var step = 10,
         image_w = 100,
         image_h = 100;
