@@ -9,8 +9,10 @@ body, html {
 }
 
 .workspace {
-  margin-top: 30px;
-  position: relative;
+    width: 960px;
+    margin: 30px auto 0;
+    position: relative    text-align: center;
+;
 }
 
 .workspace__title {
@@ -35,9 +37,8 @@ body, html {
 }
 
 .workspace__images {
-  width: 960px;
-  margin: 0 auto;
   text-align: center;
+    margin-bottom: 20px;
 }
 
 .workspace__image-before {
@@ -48,6 +49,11 @@ body, html {
 .workspace__image-after {
   position: relative;
   display: inline-block;
+    background-size: cover;
+}
+
+.workspace__actions {
+    display: inline-block;
 }
 
 [class^=color_] {
