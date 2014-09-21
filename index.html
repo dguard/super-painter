@@ -1,37 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
-    <link rel="stylesheet" href="css/main.css">
-    <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="css/main.css">
+  <meta charset="utf-8">
 </head>
 <body>
 
 <div class="workspace">
 
-    <h1 class="workspace__title"><span class="workspace__title-first">С</span>делай это из фруктов!</h1>
+  <h1 class="workspace__title"><span class="workspace__title-first">С</span>делай это из фруктов!</h1>
 
-    <div class="workspace__images">
-        <div class="workspace__image-before">
-            <img id="myImage" src="images/image4.jpeg">
-        </div>
-
-        <div class="workspace__image-after">
-            <canvas id="myCanvas" width="500" height="300"></canvas>
-            <div class="workspace__map">
-                <div class="workspace__map-inner"></div>
-            </div>
-        </div>
+  <div class="workspace__images">
+    <div class="workspace__image-before">
+      <img id="myImage" src="images/image4.jpg">
     </div>
 
-    <div class="workspace__actions">
-        <form id="id_form_updateImage">
-            <input id="id_urlImage" type="text" placeholder="URL-картинки">
-            <input id="id_segmentSize" type="text" placeholder="Размер паззла" value="10">
-
-            <input id="id_updateImage" type="submit" value="Загрузить">
-        </form>
+    <div class="workspace__image-after">
+      <canvas id="myCanvas" width="500" height="300"></canvas>
+      <div class="workspace__map">
+        <div class="workspace__map-inner"></div>
+      </div>
     </div>
+  </div>
+
+  <div class="workspace__actions">
+    <form id="id_form_updateImage">
+      <input id="id_urlImage" type="text" placeholder="URL-картинки">
+      <input id="id_segmentSize" type="text" placeholder="Размер паззла" value="10">
+
+      <input id="id_updateImage" type="submit" value="Загрузить">
+    </form>
+  </div>
 </div>
 
 <script src="vendor/jquery.js"></script>

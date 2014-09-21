@@ -2,8 +2,7 @@ $(function ()
 {
 
   // CONSTANTS BEGIN
-  var SEGMENT_SIZE = 2;
-  var cashe =[];
+  var SEGMENT_SIZE = 20;
   var LIST_COLORS = [
     "#1abc9c",
     "#2ecc71",
@@ -30,19 +29,26 @@ $(function ()
     {
       return Math.floor(Math.random() * (max - min) + min);
     },
-    
-    
+
     movePointToImage: function (x, y, className)
     {
 
-      //return function(x, y, className){
-      //  var $this =this;
+      var
+        cache = [],
+        func = function (x, y, className)
+        {
+          if (arguments.length > 0) {
+            cache
+              .push(['<div class="', className, '" style="top: ', y, 'px; left: ', x, 'px; transform: rotate(', app.Random(0, 360), 'deg);"></div>'].join(''));
+          }
 
-      cashe.push(['<div class="',className,'" style="top: ',y,'px; left: ',x,'px; transform: rotate(',app.Random(0,360),'deg);"></div>'].join(''));
-      //$this.getCashe = function(){return cashe};
-      //return $this;
-      //};
+          func.getCashe = cache;
 
+          return func.getCashe;
+
+        };
+
+      app.movePointToImage = func;
 
     },
     rgbToHex: function (r, g, b)
@@ -52,11 +58,12 @@ $(function ()
       }
       return ((r << 16) | (g << 8) | b).toString(16);
     },
-    hexToRGB: function(hex){
-      hex = hex.replace('#','');
-      var r = parseInt(hex.substring(0,2), 16);
-      var g = parseInt(hex.substring(2,4), 16);
-      var b = parseInt(hex.substring(4,6), 16);
+    hexToRGB: function (hex)
+    {
+      hex = hex.replace('#', '');
+      var r = parseInt(hex.substring(0, 2), 16);
+      var g = parseInt(hex.substring(2, 4), 16);
+      var b = parseInt(hex.substring(4, 6), 16);
 
       return {
         R: r,
@@ -64,56 +71,64 @@ $(function ()
         B: b
       };
     },
-    getNearestColor: function(hex) {
+    getNearestColor: function (hex)
+    {
       var n = 12;
       var distance = Number.MAX_VALUE;
 
-      for(var i = 0; i < LIST_COLORS.length; i++) {
-        if(this._getDistance(hex, LIST_COLORS[i]) < distance) {
+      for (var i = 0; i < LIST_COLORS.length; i++) {
+        if (this._getDistance(hex, LIST_COLORS[i]) < distance) {
           distance = this._getDistance(hex, LIST_COLORS[i]);
           n = i;
         }
       }
-      return 'color_' + (n+1);
+      return 'color_' + (n + 1);
     },
-    _getDistance: function(hex1, hex2) {
+    _getDistance: function (hex1, hex2)
+    {
       hex1 = this.hexToRGB(hex1);
       hex2 = this.hexToRGB(hex2);
       return Math.sqrt(
-        (hex1.R-hex2.R)*(hex1.R-hex2.R)+(hex1.B-hex2.G)*(hex1.G-hex2.G)+(hex1.B-hex2.B)*(hex1.B-hex2.B)
+        (hex1.R - hex2.R) * (hex1.R - hex2.R) + (hex1.B - hex2.G) * (hex1.G - hex2.G) + (hex1.B - hex2.B) * (hex1.B - hex2.B)
       );
     },
     // HELPERS END
-    init: function(){
+    init: function ()
+    {
       $('#id_urlImage').val($('#myImage').attr('src'));
       this.initEvents();
       this.initImage();
     },
-    initImage: function(){
+    initImage: function ()
+    {
       var canvas = document.getElementById("myCanvas");
       var $image = $('#myImage');
 
       var img = new Image();  // Создание нового объекта изображения
       img.src = $image.attr('src');
-      img.onload = $.proxy(function () { // Событие onLoad, ждём момента пока загрузится изображение
+      img.onload = $.proxy(function ()
+      { // Событие onLoad, ждём момента пока загрузится изображение
         canvas.width = $image.width(); // ширина
-        canvas.height= $image.height(); // высота
+        canvas.height = $image.height(); // высота
         this.drawSuperImage(this.getImageMap(canvas, img));
       }, this);
     },
-    initEvents: function(){
+    initEvents: function ()
+    {
       $('#id_updateImage').on('click', $.proxy(this.onClickUpdateImage, this));
       $('#id_form_updateImage').on('submit', $.proxy(this.onClickUpdateImage, this));
     },
-    onClickUpdateImage: function(e){
+    onClickUpdateImage: function (e)
+    {
       e.preventDefault();
       var src = $('#id_urlImage').val();
       $('#myImage').attr('src', src);
       $('.workspace__map-inner').empty();
-      SEGMENT_SIZE = $('#id_segmentSize').val()*1;
+      SEGMENT_SIZE = $('#id_segmentSize').val() * 1;
       this.initImage();
     },
-    getImageMap: function(canvas, img) {
+    getImageMap: function (canvas, img)
+    {
       var imgd, pix,
         r = 0, g = 0, b = 0,
         rowSegments = [];
@@ -146,16 +161,17 @@ $(function ()
       }
       return rowSegments;
     },
-    drawSuperImage: function(list){
-      for(var i = 0; i < list.length; i++) {
-        for(var j = 0; j < list[i].length; j++) {
+    drawSuperImage: function (list)
+    {
+      for (var i = 0; i < list.length; i++) {
+        for (var j = 0; j < list[i].length; j++) {
           var posX = SEGMENT_SIZE * j;
           var posY = SEGMENT_SIZE * i;
           this.movePointToImage(posX, posY, this.getNearestColor(list[i][j]));
         }
       }
-      $('.workspace__map-inner').append(cashe.join(''));
+      $('.workspace__map-inner').append(app.movePointToImage().join(''));
     }
   };
-    app.init();
+  app.init();
 });
